@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour {
-    [SerializeField] private Text TimerText;
+    [SerializeField] private TextMesh m_TimerText;
     [SerializeField] private float m_gametimer;
     [SerializeField] private float m_swirltimer = 120;
     [SerializeField] private GameObject Victory;
@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour {
     void Update () {
         
         m_gametimer -= Time.deltaTime;
-        TimerText.text = Mathf.Round(m_gametimer).ToString();
+        m_TimerText.text = Mathf.Round(m_gametimer).ToString();
         if(m_gametimer <= 0)
         {
             PurgatoryTheme.SetActive(false);
@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour {
             Player2Active.SetActive(false);
             Player3Active.SetActive(false);
             Player4Active.SetActive(false);
-            TimerText.gameObject.SetActive(false);
+            m_TimerText.gameObject.SetActive(false);
             Victory.SetActive(true);
             if(Player1Active.tag == "TestPlayer")
             {

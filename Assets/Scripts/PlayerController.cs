@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private float m_SwitcheRoo;
     private bool m_RecentSwitch;
-    private float m_SwitchTimer = 3;
+    private float m_SwitchTimer = 1;
     private float m_ControlTimer = 30;
 
     private Collision2D m_Col;
@@ -123,19 +123,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_PlayerTransform.name == "Player1" && m_PlayerTransform.tag == "TestPlayer")
         {
-            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("CAnimation1");
+            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("BluePlayerAnimations");
         }
         else if (m_PlayerTransform.name == "Player2" && m_PlayerTransform.tag == "TestPlayer")
         {
-            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("CAnimation2");
+            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("GreenPlayerAnimations");
         }
         else if (m_PlayerTransform.name == "Player3" && m_PlayerTransform.tag == "TestPlayer")
         {
-            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("CAnimation3");
+            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("RedPlayerAnimations");
         }
         else if (m_PlayerTransform.name == "Player4" && m_PlayerTransform.tag == "TestPlayer")
         {
-            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("CAnimation4");
+            m_Animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("YellowPlayerAnimations");
         }
         if (m_RecentSwitch == false)
         {
@@ -192,14 +192,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKey(m_LeftKey))
             {
-                if (m_PlayerTransform.tag == "Possesed")
-                {
-                    m_SpriteRenderer.flipX = true;
-                }
-                else
-                {
                     m_SpriteRenderer.flipX = false;
-                }
                 SetAnimation(AnimationState.HorizontalRun);
                 SetDirection(Direction.Left);
             }
@@ -210,14 +203,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKey(m_RightKey))
             {
-                if (m_PlayerTransform.tag == "Possesed")
-                {
-                    m_SpriteRenderer.flipX = false;
-                }
-                else
-                {
-                    m_SpriteRenderer.flipX = true;
-                }
+                m_SpriteRenderer.flipX = true;
                 SetAnimation(AnimationState.HorizontalRun);
                 SetDirection(Direction.Right);
             }
@@ -270,7 +256,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_RecentSwitch = false;
                 m_SwitcheRoo = 2;
-                m_SwitchTimer = 3;
+                m_SwitchTimer = 1;
             }
         }
         else
